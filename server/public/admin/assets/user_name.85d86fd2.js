@@ -1,0 +1,1 @@
+import{r}from"./index.49ede61a.js";function t(e){return r.get({url:"/user_name/lists",params:e})}function s(e){return r.post({url:"/user_name/add",params:e})}function u(e){return r.post({url:"/user_name/edit",params:e})}function n(e){return r.get({url:"/user_name/detail",params:e})}export{n as a,u as b,s as c,t as d};
