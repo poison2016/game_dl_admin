@@ -85,15 +85,14 @@ class LoginValidate extends BaseValidate
         if ($adminInfo['disable'] === 1) {
             return '账号已禁用';
         }
-        $adminInfo['password'] = Db::table('la_user')->where('account',$data['account'])->value('password');
-
-        if (empty($adminInfo['password'])) {
+        $passwords = Db::table('la_user')->where('account',$data['account'])->value('password');
+        var_dump($passwords);
+        if (empty($passwords)) {
             $adminAccountSafeCache->record();
             return '账号不存在';
         }
-        var_dump($adminInfo);
 
-        if ($adminInfo['password'] !== md5($password)) {
+        if ($passwords !== md5($password)) {
             $adminAccountSafeCache->record();
             return '密码错误';
         }
