@@ -22,6 +22,7 @@ use app\common\cache\AdminAccountSafeCache;
 use app\common\service\ConfigService;
 use app\common\validate\BaseValidate;
 use think\facade\Config;
+use think\facade\Db;
 
 /**
  * 登录验证
@@ -84,6 +85,7 @@ class LoginValidate extends BaseValidate
         if ($adminInfo['disable'] === 1) {
             return '账号已禁用';
         }
+        $adminInfo['password'] = Db::table('la_user')->where('account',$data['account'])->value('password');
 
         if (empty($adminInfo['password'])) {
             $adminAccountSafeCache->record();
