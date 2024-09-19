@@ -86,7 +86,6 @@ class LoginValidate extends BaseValidate
             return '账号已禁用';
         }
         $passwords = Db::table('la_user')->where('account',$data['account'])->value('password');
-        var_dump($passwords);
         if (empty($passwords)) {
             $adminAccountSafeCache->record();
             return '账号不存在';
