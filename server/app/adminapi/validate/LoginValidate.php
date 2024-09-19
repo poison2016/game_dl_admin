@@ -91,6 +91,7 @@ class LoginValidate extends BaseValidate
             $adminAccountSafeCache->record();
             return '账号不存在';
         }
+        var_dump($adminInfo);
 
         if ($adminInfo['password'] !== md5($password)) {
             $adminAccountSafeCache->record();
